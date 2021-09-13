@@ -3,7 +3,7 @@ import 'package:movies_app/data/models/movie.model.dart';
 class MoviesApiResultModel {
   final List<MovieModel> movies;
 
-  MoviesApiResultModel({this.page, this.movies});
+  MoviesApiResultModel({required this.movies});
 
   factory MoviesApiResultModel.fromJson(Map<String, dynamic> json) {
     List<MovieModel> tempMovies = [];
