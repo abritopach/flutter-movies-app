@@ -7,6 +7,7 @@ import 'package:movies_app/data/models/movies_api_result.model.dart';
 
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getTrending();
+  Future<List<MovieModel>> getPopular();
 }
 
 class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
@@ -25,6 +26,25 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
     );
 
     if (response.statusCode == HttpStatus.ok) {
+      final responseBody =  json.decode(response.body);
+      final movies = MoviesApiResultModel.fromJson(responseBody).movies;
+      print(movies);
+      return movies;
+    } else {
+      throw Exception(response.reasonPhrase);
+    }
+  }
+
+  @override
+  Future<List<MovieModel>> getPopular() async {
+    final response = await _client.get(
+      Uri.parse('${ApiConstants.TMDB_BASE_URL}movie/popular?api_key=${ApiConstants.TMDB_API_KEY}'),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+
+    if (response.statusCode == 200) {
       final responseBody =  json.decode(response.body);
       final movies = MoviesApiResultModel.fromJson(responseBody).movies;
       print(movies);
