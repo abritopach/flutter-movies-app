@@ -3,10 +3,10 @@ import 'package:movies_app/data/core/app.error.dart';
 import 'package:movies_app/data/repositories/movie.repository.dart';
 import 'package:movies_app/domain/entities/movie.entity.dart';
 
-class GetTrending {
+class GetComingSoon {
   final MovieRepository repository;
 
-  GetTrending(this.repository);
+  GetComingSoon(this.repository);
 
   Future<Either<AppError, List<MovieEntity>>> call() async {
     return await repository.getTrending();

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:movies_app/data/core/api.client.dart';
+import 'package:movies_app/data/core/app.error.dart';
 import 'package:movies_app/data/data_sources/movie_remote.datasource.dart';
 import 'package:movies_app/data/repositories/movie.repository.dart';
 import 'package:movies_app/data/repositories/movie.repositoryImpl.dart';
+import 'package:movies_app/domain/entities/movie.entity.dart';
 import 'package:movies_app/domain/usecases/get_trending.usecase.dart';
 
-void main() {
+void main() async {
 
   MovieRemoteDataSource dataSource = MovieRemoteDataSourceImpl(ApiClient(Client()));
   // dataSource.getTrending();
@@ -16,6 +18,20 @@ void main() {
 
   GetTrending getTrending = GetTrending(movieRepository);
   getTrending();
+
+  /*
+  final Either<AppError, List<MovieEntity>> eitherResponse = await getTrending();
+  eitherResponse.fold(
+    (l) {
+      print('error');
+      print(l);
+    },
+    (r) {
+      print('list of movies');
+      print(r);
+    },
+  );
+  */
 
   runApp(MyApp());
 }
