@@ -27,6 +27,7 @@ class MovieRemoteDataSourceImpl extends MovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getPopular() async {
     final response = await _client.get('movie/popular');
+    print('MovieRemoteDataSourceImpl::getPopular response $response');
     return MoviesApiResultModel.fromJson(response).movies;
   }
 }
