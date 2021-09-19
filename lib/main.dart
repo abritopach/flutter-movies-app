@@ -4,6 +4,7 @@ import 'package:movies_app/data/core/api.client.dart';
 import 'package:movies_app/data/data_sources/movie_remote.datasource.dart';
 import 'package:movies_app/data/repositories/movie.repository.dart';
 import 'package:movies_app/data/repositories/movie.repositoryImpl.dart';
+import 'package:movies_app/domain/usecases/get_trending.usecase.dart';
 
 void main() {
 
@@ -11,7 +12,10 @@ void main() {
   // dataSource.getTrending();
 
   MovieRepository movieRepository = MovieRepositoryImpl(dataSource);
-  movieRepository.getTrending();
+  // movieRepository.getTrending();
+
+  GetTrending getTrending = GetTrending(movieRepository);
+  getTrending();
 
   runApp(MyApp());
 }
