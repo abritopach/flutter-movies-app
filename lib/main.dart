@@ -7,6 +7,7 @@ import 'package:movies_app/data/repositories/movie.repository.dart';
 import 'package:movies_app/data/repositories/movie.repositoryImpl.dart';
 import 'package:movies_app/domain/entities/movie.entity.dart';
 import 'package:movies_app/domain/usecases/get_trending.usecase.dart';
+import 'package:movies_app/utils/noparams.dart';
 
 void main() async {
 
@@ -17,7 +18,7 @@ void main() async {
   // movieRepository.getTrending();
 
   GetTrending getTrending = GetTrending(movieRepository);
-  getTrending();
+  getTrending(NoParams());
 
   /*
   final Either<AppError, List<MovieEntity>> eitherResponse = await getTrending();
