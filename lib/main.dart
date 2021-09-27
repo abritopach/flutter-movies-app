@@ -9,6 +9,9 @@ import 'package:movies_app/domain/entities/movie.entity.dart';
 import 'package:movies_app/domain/usecases/get_trending.usecase.dart';
 import 'package:movies_app/utils/noparams.dart';
 
+import 'package:pedantic/pedantic.dart';
+import 'di/get_it.dart' as getIt;
+
 void main() async {
 
   MovieRemoteDataSource dataSource = MovieRemoteDataSourceImpl(ApiClient(Client()));
@@ -17,7 +20,12 @@ void main() async {
   MovieRepository movieRepository = MovieRepositoryImpl(dataSource);
   // movieRepository.getTrending();
 
-  GetTrending getTrending = GetTrending(movieRepository);
+  // Use unawaited that will allow the app to not wait for GetIt initialization to happen before
+  // launching its first frame.
+  unawaited(getIt.init());
+
+  GetTrending getTrending = getIt.getItInstance<GetTrending>();
+  // GetTrending getTrending = GetTrending(movieRepository);
   getTrending(NoParams());
 
   /*
