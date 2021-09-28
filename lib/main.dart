@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:movies_app/data/core/api.client.dart';
 import 'package:movies_app/data/core/app.error.dart';
@@ -12,8 +13,9 @@ import 'package:movies_app/utils/noparams.dart';
 import 'package:pedantic/pedantic.dart';
 import 'di/get_it.dart' as getIt;
 
-void main() async {
+void main() {
 
+  /*
   MovieRemoteDataSource dataSource = MovieRemoteDataSourceImpl(ApiClient(Client()));
   // dataSource.getTrending();
 
@@ -27,6 +29,7 @@ void main() async {
   GetTrending getTrending = getIt.getItInstance<GetTrending>();
   // GetTrending getTrending = GetTrending(movieRepository);
   getTrending(NoParams());
+  */
 
   /*
   final Either<AppError, List<MovieEntity>> eitherResponse = await getTrending();
@@ -41,6 +44,15 @@ void main() async {
     },
   );
   */
+
+  // As per official Flutter documentation, this is the glue that binds the framework to the Flutter engine.
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // As we’re only supporting portrait till now, you should force it to have portraitUp orientation.
+  //If in the future, you support other orientations, you can remove this snippet.
+  unawaited(SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]));
+
+  unawaited(getIt.init());
 
   runApp(MyApp());
 }
