@@ -10,7 +10,7 @@ class Logo extends StatelessWidget {
   // Constructor with height as required field and add some assertions, that make this widget fail-safe.
   // With these two assertions, this widget unknowingly can’t be called with height as null or <= 0.
   const Logo({
-    required Key key,
+    Key? key,
     required this.height,
   })  : assert(height != null, 'height must not be null'),
         assert(height > 0, 'height should be greater than 0'),
