@@ -12,7 +12,7 @@ class MovieCarouselBloc extends Bloc<MovieCarouselEvent, MovieCarouselState> {
   final GetTrending getTrending;
 
   MovieCarouselBloc({
-    @required this.getTrending,
+    required this.getTrending,
   }) : super(MovieCarouselInitial());
 
   @override

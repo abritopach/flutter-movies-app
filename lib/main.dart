@@ -8,6 +8,7 @@ import 'package:movies_app/data/repositories/movie.repository.dart';
 import 'package:movies_app/data/repositories/movie.repositoryImpl.dart';
 import 'package:movies_app/domain/entities/movie.entity.dart';
 import 'package:movies_app/domain/usecases/get_trending.usecase.dart';
+import 'package:movies_app/presentation/movie.app.dart';
 import 'package:movies_app/utils/noparams.dart';
 
 import 'package:pedantic/pedantic.dart';
@@ -54,9 +55,11 @@ void main() {
 
   unawaited(getIt.init());
 
-  runApp(MyApp());
+  //runApp(MyApp());
+  runApp(MovieApp());
 }
 
+/*
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -164,3 +167,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/
