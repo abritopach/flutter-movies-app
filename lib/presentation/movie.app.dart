@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/common/screenutil/screenutil.dart';
 import 'package:movies_app/presentation/journeys/home/home.screen.dart';
 import 'package:movies_app/presentation/themes/app_color.dart';
 import 'package:movies_app/presentation/themes/theme_text.dart';
@@ -9,7 +9,7 @@ class MovieApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    // ScreenUtil.init();
+    ScreenUtil.init();
 
     return MaterialApp(
       // Use MaterialApp widget with debugBanner as false.
