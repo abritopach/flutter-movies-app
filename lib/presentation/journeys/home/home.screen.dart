@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/di/get_it.dart';
+import 'package:movies_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:movies_app/presentation/blocs/movie_carousel/movie_carousel_bloc.dart';
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_carousel.widget.dart';
 
@@ -11,12 +12,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late MovieCarouselBloc movieCarouselBloc;
+  late MovieBackdropBloc movieBackdropBloc;
+
 
   @override
   void initState() {
     super.initState();
     // Initialize the MovieCarouselBloc from GetIt.
     movieCarouselBloc = getItInstance<MovieCarouselBloc>();
+    // Fetch the instance of MovieBackdropBloc from getIt.
+    movieBackdropBloc = getItInstance<MovieBackdropBloc>();
+
     // When the home screen initializes, dispatch the only event for MovieCarouselBloc.
     // This will make an API call and yield the MovieCarouselLoaded or MovieCarouselError state.
     movieCarouselBloc.add(CarouselLoadEvent());
@@ -27,14 +33,21 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
     // In dispose(), don't forget to close the bloc.
     movieCarouselBloc.close();
+    movieBackdropBloc.close();
   }
 
   @override
   Widget build(BuildContext context) {
+    // MultiBlocProvider takes an array of BlocProvider.
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => movieCarouselBloc),
+        BlocProvider(create: (_) => movieBackdropBloc),
+      ],
     // Use BlocProvider to provide the MovieCarouselBloc instance down the tree.
-    return BlocProvider(
+    //return BlocProvider(
       // You need not create the bloc here as it is already done in initState().
-      create: (_) => movieCarouselBloc,
+    //  create: (_) => movieCarouselBloc,
       // The home screen has 2 sections — top and bottom. To make these sections proportional for any mobile
       // size, we’ll use FractionallySizedBox. The top section is 60% of the screen and the bottom section
       // is 40%

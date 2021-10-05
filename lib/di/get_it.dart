@@ -8,6 +8,7 @@ import 'package:movies_app/domain/usecases/get_coming_soon.usecase.dart';
 import 'package:movies_app/domain/usecases/get_playing_now.usecase.dart';
 import 'package:movies_app/domain/usecases/get_popular.usecase.dart';
 import 'package:movies_app/domain/usecases/get_trending.usecase.dart';
+import 'package:movies_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:movies_app/presentation/blocs/movie_carousel/movie_carousel_bloc.dart';
 
 // Get the static instance of GetIt.
@@ -25,8 +26,6 @@ init() {
   getItInstance.registerLazySingleton<GetComingSoon>(() => GetComingSoon(getItInstance()));
   getItInstance.registerLazySingleton<MovieRepository>(() => MovieRepositoryImpl(getItInstance()));
   getItInstance.registerFactory(
-  () => MovieCarouselBloc(
-    getTrending: getItInstance(),
-  ),
-);
+  () => MovieCarouselBloc(getTrending: getItInstance(),),);
+  getItInstance.registerFactory(() => MovieBackdropBloc());
 }

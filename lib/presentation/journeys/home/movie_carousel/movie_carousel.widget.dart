@@ -19,15 +19,23 @@ class MovieCarouselWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // A column with just 2 elements. First being the MovieAppBar.
-    return Column(
+    // Since the backdrop is behind the MoviePageView, use Stack with the fit as StackFit.expand.
+    return Stack(
+      fit: StackFit.expand,
       children: [
-        MovieAppBar(),
-        // Next in Column is MoviePageView, below MovieAppBar. This widget also takes in the list
-        // of movies and the defaultIndex.
-        MoviePageView(
-          movies: movies,
-          initialPage: defaultIndex,
+        //2
+        MovieBackdropWidget(),
+      // A column with just 2 elements. First being the MovieAppBar.
+        Column(
+          children: [
+            MovieAppBar(),
+            // Next in Column is MoviePageView, below MovieAppBar. This widget also takes in the list
+            // of movies and the defaultIndex.
+            MoviePageView(
+              movies: movies,
+              initialPage: defaultIndex,
+            ),
+          ],
         ),
       ],
     );

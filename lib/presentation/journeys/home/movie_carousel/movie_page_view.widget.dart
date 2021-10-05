@@ -1,9 +1,12 @@
 // Create a stateful widget with a list of movies and initialPage. The initialPage is same as defaultIndex,
 // so apply the same assertion to this as well.
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/common/constants/size.constants.dart';
 import 'package:movies_app/common/screenutil/screenutil.dart';
 import 'package:movies_app/domain/entities/movie.entity.dart';
+import 'package:movies_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
+import 'package:movies_app/presentation/journeys/home/movie_carousel/animated_movie_card.widget.dart';
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_card.widget.dart';
 import '../../../../common/extensions/size_extensions.dart';
 
@@ -64,7 +67,15 @@ class _MoviePageViewState extends State<MoviePageView> {
           // In the itemBuilder, based on index return the MovieCardWidget. Generally, we get 20 movies from
           // the API, so itemBuilder will create 20 cards.
           final MovieEntity movie = widget.movies[index];
+          /*
           return MovieCardWidget(
+            movieId: movie.id,
+            posterPath: movie.posterPath,
+          );
+          */
+          return AnimatedMovieCardWidget(
+            index: index,
+            pageController: _pageController,
             movieId: movie.id,
             posterPath: movie.posterPath,
           );
@@ -77,7 +88,11 @@ class _MoviePageViewState extends State<MoviePageView> {
         itemCount: widget.movies.length,
         // To update the backdrop image and title of the movie below PageView, we'll need to get the callback
         // when the PageView is scrolled.
-        onPageChanged: (index) {},
+        onPageChanged: (index) {
+          // Since home_screen provided the bloc, it can be used in the descendants by using BlocProvider.of(context).
+          BlocProvider.of<MovieBackdropBloc>(context)
+            .add(MovieBackdropChangedEvent(widget.movies[index])); // Dispatch the event with the movie in focus, with the help of index.
+        },
       ),
     );
   }
