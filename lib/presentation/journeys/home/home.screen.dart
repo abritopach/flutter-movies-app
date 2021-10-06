@@ -21,7 +21,12 @@ class _HomeScreenState extends State<HomeScreen> {
     // Initialize the MovieCarouselBloc from GetIt.
     movieCarouselBloc = getItInstance<MovieCarouselBloc>();
     // Fetch the instance of MovieBackdropBloc from getIt.
-    movieBackdropBloc = getItInstance<MovieBackdropBloc>();
+    // movieBackdropBloc = getItInstance<MovieBackdropBloc>();
+
+    // Do not take the instance from GetIt, instead take it from MovieCarouselBloc.
+    // This same instance will be used in the MovieCarouselBloc to dispatch the
+    // MovieBackdropChangedEvent of MovieBackdropBloc.
+    movieBackdropBloc = movieCarouselBloc.movieBackdropBloc;
 
     // When the home screen initializes, dispatch the only event for MovieCarouselBloc.
     // This will make an API call and yield the MovieCarouselLoaded or MovieCarouselError state.

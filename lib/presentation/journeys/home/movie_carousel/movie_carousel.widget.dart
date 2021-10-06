@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/domain/entities/movie.entity.dart';
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_backdrop.widget.dart';
+import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_data.widget.dart';
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_page_view.widget.dart';
 import 'package:movies_app/presentation/widgets/app_bar.widget.dart';
 
@@ -36,6 +37,7 @@ class MovieCarouselWidget extends StatelessWidget {
               movies: movies,
               initialPage: defaultIndex,
             ),
+            MovieDataWidget()
           ],
         ),
       ],
