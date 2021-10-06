@@ -26,6 +26,8 @@ init() {
   getItInstance.registerLazySingleton<GetComingSoon>(() => GetComingSoon(getItInstance()));
   getItInstance.registerLazySingleton<MovieRepository>(() => MovieRepositoryImpl(getItInstance()));
   getItInstance.registerFactory(
-  () => MovieCarouselBloc(getTrending: getItInstance(),),);
+  () => MovieCarouselBloc(
+    getTrending: getItInstance(),
+    movieBackdropBloc: getItInstance(),),);
   getItInstance.registerFactory(() => MovieBackdropBloc());
 }
