@@ -4,6 +4,7 @@ import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_backd
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_data.widget.dart';
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_page_view.widget.dart';
 import 'package:movies_app/presentation/widgets/app_bar.widget.dart';
+import 'package:movies_app/presentation/widgets/separator.widget.dart';
 
 class MovieCarouselWidget extends StatelessWidget {
   // MovieCarouselWidget is a stateless widget, that works on a list of movies and the defaultIndex.
@@ -37,7 +38,8 @@ class MovieCarouselWidget extends StatelessWidget {
               movies: movies,
               initialPage: defaultIndex,
             ),
-            MovieDataWidget()
+            MovieDataWidget(),
+            Separator(),
           ],
         ),
       ],
