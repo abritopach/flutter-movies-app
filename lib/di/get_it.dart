@@ -10,6 +10,7 @@ import 'package:movies_app/domain/usecases/get_popular.usecase.dart';
 import 'package:movies_app/domain/usecases/get_trending.usecase.dart';
 import 'package:movies_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:movies_app/presentation/blocs/movie_carousel/movie_carousel_bloc.dart';
+import 'package:movies_app/presentation/blocs/movie_tab/movie_tab_bloc.dart';
 
 // Get the static instance of GetIt.
 final getItInstance = GetIt.I;
@@ -30,4 +31,11 @@ init() {
     getTrending: getItInstance(),
     movieBackdropBloc: getItInstance(),),);
   getItInstance.registerFactory(() => MovieBackdropBloc());
+  getItInstance.registerFactory(
+  () => MovieTabBloc(
+    getPopular: GetPopular(getItInstance()),
+    getComingSoon: GetComingSoon(getItInstance()),
+    getPlayingNow: GetPlayingNow(getItInstance()),
+  ),
+);
 }
