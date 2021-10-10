@@ -3,7 +3,7 @@ import 'package:movies_app/common/constants/size.constants.dart';
 import 'package:movies_app/domain/entities/movie.entity.dart';
 import 'package:movies_app/presentation/widgets/tab_card.widget.dart';
 
-import 'package:movies_app/common/extensions/size_extensions.dart';
+import '../../common/extensions/size_extensions.dart';
 
 class MovieListViewBuilder extends StatelessWidget {
   final List<MovieEntity> movies;

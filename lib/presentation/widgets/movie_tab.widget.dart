@@ -6,7 +6,7 @@ import 'package:movies_app/presentation/blocs/movie_tab/movie_tab_bloc.dart';
 import 'package:movies_app/presentation/widgets/movie_list_view_builder.widget.dart';
 import 'package:movies_app/presentation/widgets/tab_title.widget.dart';
 
-import 'package:movies_app/common/extensions/size_extensions.dart';
+import '../../common/extensions/size_extensions.dart';
 
 class MovieTabWidget extends StatefulWidget {
   @override

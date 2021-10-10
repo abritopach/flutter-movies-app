@@ -5,6 +5,8 @@ import 'package:movies_app/data/core/api.constants.dart';
 
 import '../../common/extensions/size_extensions.dart';
 
+import '../../common/extensions/string_extensions.dart';
+
 class TabCardWidget extends StatelessWidget {
   // We need movieId in the future for loading movie details.
   final int movieId;
@@ -46,7 +48,7 @@ class TabCardWidget extends StatelessWidget {
             padding: EdgeInsets.only(top: Sizes.dimen_4.h),
             // Text widget to show the title of the movie.
             child: Text(
-              title,
+              title.intelliTrim(),
               // We want to have a single line of the title, with text aligned as a center and bodyText2
               // text style.
               maxLines: 1,
