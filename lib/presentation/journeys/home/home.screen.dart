@@ -5,6 +5,7 @@ import 'package:movies_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc
 import 'package:movies_app/presentation/blocs/movie_carousel/movie_carousel_bloc.dart';
 import 'package:movies_app/presentation/blocs/movie_tab/movie_tab_bloc.dart';
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_carousel.widget.dart';
+import 'package:movies_app/presentation/widgets/movie_tab.widget.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -92,8 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     // The heightFactor of this remaining part of the screen which will be 0.4
                     heightFactor: 0.4,
                     // MovieTabbedWidget will replace the Placeholder widget
-                    // TODO: Add MovieTabbedWidget here in child.
-                    child: Placeholder(color: Colors.white),
+                    child: MovieTabWidget(),
                   ),
                 ],
               );
