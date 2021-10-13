@@ -23,11 +23,7 @@ class MovieTabBloc extends Bloc<MovieTabEvent, MovieTabState> {
     required this.getPopular,
     required this.getPlayingNow,
     required this.getComingSoon,
-  }) : super(MovieTabInitial(currentTabIndex: 0)) {
-    on<MovieTabEvent>((event, emit) {
-      // TODO: implement event handler
-    });
-  }
+  }) : super(MovieTabInitial(currentTabIndex: 0));
 
   @override
   Stream<MovieTabState> mapEventToState(
