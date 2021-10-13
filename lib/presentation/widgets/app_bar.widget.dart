@@ -24,7 +24,9 @@ class MovieAppBar extends StatelessWidget {
           // In Row, at start and end add the 2 IconButtons. One being SvgPicture and the other being taken
           // from the Flutter framework itself.
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
             icon: SvgPicture.asset('assets/svgs/menu.svg', height: Sizes.dimen_12.h),
           ),
           // The remaining space in between these 2 images, use the Logo widget.

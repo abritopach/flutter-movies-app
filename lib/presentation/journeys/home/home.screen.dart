@@ -4,6 +4,7 @@ import 'package:movies_app/di/get_it.dart';
 import 'package:movies_app/presentation/blocs/movie_backdrop/movie_backdrop_bloc.dart';
 import 'package:movies_app/presentation/blocs/movie_carousel/movie_carousel_bloc.dart';
 import 'package:movies_app/presentation/blocs/movie_tab/movie_tab_bloc.dart';
+import 'package:movies_app/presentation/journeys/drawer/navigation_drawer.widget.dart';
 import 'package:movies_app/presentation/journeys/home/movie_carousel/movie_carousel.widget.dart';
 import 'package:movies_app/presentation/widgets/movie_tab.widget.dart';
 
@@ -64,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // size, we’ll use FractionallySizedBox. The top section is 60% of the screen and the bottom section
       // is 40%
       child: Scaffold(
+        drawer: const NavigationDrawer(),
         // Use BlocBuilder to read the current state of MovieCarouselBloc.
         // The builder takes in context and state.
         body: BlocBuilder<MovieCarouselBloc, MovieCarouselState>(

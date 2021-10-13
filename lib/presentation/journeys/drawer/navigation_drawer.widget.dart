@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/common/constants/size.constants.dart';
+import 'package:movies_app/presentation/widgets/logo.widget.dart';
 
 import '../../../common/extensions/size_extensions.dart';
 
@@ -12,7 +13,38 @@ class NavigationDrawer extends StatelessWidget {
     // Return a Container with a fixed width of 300 and the primaryColor with 0.7 opacity.
     return Container(
       width: Sizes.dimen_300.w,
-      color: Theme.of(context).primaryColor.withOpacity(0.7),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).primaryColor.withOpacity(0.7),
+            blurRadius: 4,
+          ),
+        ],
+      ),
+      // Use SafeArea to have logical space from the top.
+      child: SafeArea(
+        // For all the items in the vertical direction, use Column.
+        child: Column(
+          // Use CrossAxisAlignment.start to have every item start from left.
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // Add Padding from all directions to have proper space between the list items and the Logo.
+            Padding(
+              padding: EdgeInsets.only(
+                top: Sizes.dimen_8.h,
+                bottom: Sizes.dimen_18.h,
+                left: Sizes.dimen_8.w,
+                right: Sizes.dimen_8.h,
+              ),
+              // Use the Logo widget that we create and use in MovieAppBar.
+              // If you remember, I intentionally added height as an argument for this Logo. Provide 20 height.
+              child: Logo(
+                height: Sizes.dimen_20.h,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
