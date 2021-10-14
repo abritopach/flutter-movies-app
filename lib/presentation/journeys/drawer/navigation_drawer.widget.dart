@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/common/constants/size.constants.dart';
+import 'package:movies_app/presentation/journeys/drawer/navigation_list_item.widget.dart';
 import 'package:movies_app/presentation/widgets/logo.widget.dart';
 
 import '../../../common/extensions/size_extensions.dart';
@@ -41,6 +42,20 @@ class NavigationDrawer extends StatelessWidget {
               child: Logo(
                 height: Sizes.dimen_20.h,
               ),
+            ),
+            // Use NavigationListItem for Favorite Movies and keep the onPressed as empty method right now.
+            NavigationListItem(
+              title: 'Favorite Movies',
+              onPressed: () {},
+            ),
+            // Similarly add Feedback and About list item as well.
+            NavigationListItem(
+              title: 'Feedback',
+              onPressed: () {},
+            ),
+            NavigationListItem(
+              title: 'About',
+              onPressed: () {},
             ),
           ],
         ),
