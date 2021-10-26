@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/common/constants/size.constants.dart';
+import 'package:movies_app/presentation/journeys/drawer/navigation_expanded_list_item.widget.dart';
 import 'package:movies_app/presentation/journeys/drawer/navigation_list_item.widget.dart';
 import 'package:movies_app/presentation/widgets/logo.widget.dart';
 
@@ -47,6 +48,15 @@ class NavigationDrawer extends StatelessWidget {
             NavigationListItem(
               title: 'Favorite Movies',
               onPressed: () {},
+            ),
+            NavigationExpandedListItem(
+              title: 'Language',
+              //1
+              children: [
+                'English',
+                'Spanish',
+              ],
+              onPressed: (index) {},
             ),
             // Similarly add Feedback and About list item as well.
             NavigationListItem(
