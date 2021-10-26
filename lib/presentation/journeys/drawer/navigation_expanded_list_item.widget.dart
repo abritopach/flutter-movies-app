@@ -34,7 +34,7 @@ class NavigationExpandedListItem extends StatelessWidget {
         // list of strings and create a NavigationListItem.
         children: <Widget>[
           for (int i = 0; i < children.length; i++)
-            NavigationListItem(
+            NavigationSubListItem(
               title: children[i],
               onPressed: () {},
             ),
