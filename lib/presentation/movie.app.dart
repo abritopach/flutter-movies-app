@@ -19,6 +19,7 @@ class MovieApp extends StatelessWidget {
       // All our screens have vulcan as their background color. Also, give the text theme.
       theme: ThemeData(
         primaryColor: AppColor.vulcan,
+        accentColor: AppColor.royalBlue,
         scaffoldBackgroundColor: AppColor.vulcan,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: ThemeText.getTextTheme(),
