@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:movies_app/common/constants/languages.constants.dart';
 import 'package:movies_app/common/screenutil/screenutil.dart';
 import 'package:movies_app/presentation/journeys/home/home.screen.dart';
 import 'package:movies_app/presentation/themes/app_color.dart';
@@ -12,6 +14,12 @@ class MovieApp extends StatelessWidget {
     ScreenUtil.init();
 
     return MaterialApp(
+      supportedLocales: Languages.languages.map((e) => Locale(e.code)).toList(),
+      locale: Locale(Languages.languages[0].code),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
       // Use MaterialApp widget with debugBanner as false.
       debugShowCheckedModeBanner: false,
       title: 'Movie App',
