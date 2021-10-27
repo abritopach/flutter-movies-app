@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movies_app/common/constants/languages.constants.dart';
 import 'package:movies_app/common/screenutil/screenutil.dart';
 import 'package:movies_app/presentation/journeys/home/home.screen.dart';
+import 'package:movies_app/presentation/movie.app.localizations.dart';
 import 'package:movies_app/presentation/themes/app_color.dart';
 import 'package:movies_app/presentation/themes/theme_text.dart';
 
@@ -17,6 +18,7 @@ class MovieApp extends StatelessWidget {
       supportedLocales: Languages.languages.map((e) => Locale(e.code)).toList(),
       locale: Locale(Languages.languages[0].code),
       localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
