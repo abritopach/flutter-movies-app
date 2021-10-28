@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:movies_app/presentation/movie.app.localizations.dart';
+
 extension StringExtension on String {
   // Declare a function that you can call on any string.
   String intelliTrim() {
@@ -5,5 +8,9 @@ extension StringExtension on String {
     // letters. Otherwise, take the complete string. This way, we only trim the strings which are more than
     // allowed length.
     return this.length > 15 ? '${this.substring(0, 15)}...' : this;
+  }
+
+  String t(BuildContext context) {
+    return AppLocalizations.of(context)?.translate(this) ?? '';
   }
 }

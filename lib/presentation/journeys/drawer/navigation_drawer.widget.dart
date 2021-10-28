@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/common/constants/languages.constants.dart';
 import 'package:movies_app/common/constants/size.constants.dart';
+import 'package:movies_app/common/constants/translation.constants.dart';
 import 'package:movies_app/presentation/journeys/drawer/navigation_expanded_list_item.widget.dart';
 import 'package:movies_app/presentation/journeys/drawer/navigation_list_item.widget.dart';
 import 'package:movies_app/presentation/movie.app.localizations.dart';
 import 'package:movies_app/presentation/widgets/logo.widget.dart';
 
 import '../../../common/extensions/size_extensions.dart';
+import '../../../common/extensions/string_extensions.dart';
 
 class NavigationDrawer extends StatelessWidget {
   // Declare a const constructor so that we can use const on the home screen and improve little performance.
@@ -48,22 +50,22 @@ class NavigationDrawer extends StatelessWidget {
             ),
             // Use NavigationListItem for Favorite Movies and keep the onPressed as empty method right now.
             NavigationListItem(
-              title: AppLocalizations.of(context)!.translate('favoriteMovies')!,
+              title: TranslationConstants.favoriteMovies.t(context),
               onPressed: () {},
             ),
             NavigationExpandedListItem(
-              title: 'Language',
+              title: TranslationConstants.language.t(context),
               //1
               children: Languages.languages.map((e) => e.value).toList(),
               onPressed: (index) {},
             ),
             // Similarly add Feedback and About list item as well.
             NavigationListItem(
-              title: 'Feedback',
+              title: TranslationConstants.feedback.t(context),
               onPressed: () {},
             ),
             NavigationListItem(
-              title: 'About',
+              title: TranslationConstants.about.t(context),
               onPressed: () {},
             ),
           ],
