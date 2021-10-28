@@ -3,6 +3,7 @@ import 'package:movies_app/common/constants/languages.constants.dart';
 import 'package:movies_app/common/constants/size.constants.dart';
 import 'package:movies_app/presentation/journeys/drawer/navigation_expanded_list_item.widget.dart';
 import 'package:movies_app/presentation/journeys/drawer/navigation_list_item.widget.dart';
+import 'package:movies_app/presentation/movie.app.localizations.dart';
 import 'package:movies_app/presentation/widgets/logo.widget.dart';
 
 import '../../../common/extensions/size_extensions.dart';
@@ -47,7 +48,7 @@ class NavigationDrawer extends StatelessWidget {
             ),
             // Use NavigationListItem for Favorite Movies and keep the onPressed as empty method right now.
             NavigationListItem(
-              title: 'Favorite Movies',
+              title: AppLocalizations.of(context)!.translate('favoriteMovies')!,
               onPressed: () {},
             ),
             NavigationExpandedListItem(
