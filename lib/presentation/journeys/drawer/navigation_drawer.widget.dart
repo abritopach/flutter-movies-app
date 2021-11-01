@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/common/constants/languages.constants.dart';
 import 'package:movies_app/common/constants/size.constants.dart';
 import 'package:movies_app/common/constants/translation.constants.dart';
+import 'package:movies_app/presentation/blocs/language/bloc/language_bloc.dart';
 import 'package:movies_app/presentation/journeys/drawer/navigation_expanded_list_item.widget.dart';
 import 'package:movies_app/presentation/journeys/drawer/navigation_list_item.widget.dart';
 import 'package:movies_app/presentation/movie.app.localizations.dart';
@@ -18,7 +20,6 @@ class NavigationDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     // Return a Container with a fixed width of 300 and the primaryColor with 0.7 opacity.
     return Container(
-      width: Sizes.dimen_300.w,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -27,6 +28,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
         ],
       ),
+      width: Sizes.dimen_300.w,
       // Use SafeArea to have logical space from the top.
       child: SafeArea(
         // For all the items in the vertical direction, use Column.
@@ -55,9 +57,14 @@ class NavigationDrawer extends StatelessWidget {
             ),
             NavigationExpandedListItem(
               title: TranslationConstants.language.t(context),
-              //1
               children: Languages.languages.map((e) => e.value).toList(),
-              onPressed: (index) {},
+              onPressed: (index) {
+                BlocProvider.of<LanguageBloc>(context).add(
+                  ToggleLanguageEvent(
+                    Languages.languages[index],
+                  ),
+                );
+              },
             ),
             // Similarly add Feedback and About list item as well.
             NavigationListItem(

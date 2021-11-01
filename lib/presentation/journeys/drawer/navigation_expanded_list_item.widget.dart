@@ -19,7 +19,7 @@ class NavigationExpandedListItem extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).primaryColor.withOpacity(0.7),
             blurRadius: 2,
           ),
         ],
@@ -36,7 +36,7 @@ class NavigationExpandedListItem extends StatelessWidget {
           for (int i = 0; i < children.length; i++)
             NavigationSubListItem(
               title: children[i],
-              onPressed: () {},
+              onPressed: () => onPressed(i),
             ),
         ],
       ),

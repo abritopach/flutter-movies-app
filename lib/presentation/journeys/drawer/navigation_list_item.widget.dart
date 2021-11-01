@@ -26,7 +26,7 @@ class NavigationListItem extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).primaryColor.withOpacity(0.7),
               blurRadius: 2,
             ),
           ],
@@ -58,7 +58,7 @@ class NavigationSubListItem extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).primaryColor.withOpacity(0.7),
               blurRadius: 2,
             ),
           ],
